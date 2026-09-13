@@ -25,6 +25,11 @@ export function initFiltering(elements, indexes) {
             state[field] = '';
         }
 
-        return data.filter(row => compare(row, state));
+        const filterState = {
+            ...state,
+            total: [state.totalFrom, state.totalTo]
+        };
+
+        return data.filter(row => compare(row, filterState));
     }
 }
